@@ -8,6 +8,7 @@ var app = express();
 var authenticationController = require('./server/controllers/authentication-controller');
 var profileController = require('./server/controllers/profile-controller');
 var wasteController = require('./server/controllers/waste-controller');
+var resourceController = require('./server/controllers/resource-controller');
 
 mongoose.connect('mongodb://localhost:27017/webdev');
 
@@ -34,6 +35,10 @@ app.post('/api/profile/updateBio', profileController.updateBio);
 //Waste
 app.post('/api/waste/post', wasteController.postWaste);
 app.get('/api/waste/get', wasteController.getWastes);
+
+// Resources
+app.post('/api/resource/post', resourceController.postResource);
+//app.get('/api/resource/get', resourceController.getResources);
 
 app.listen('3000', function(){
 	console.log("Listening for localhost 3000");
